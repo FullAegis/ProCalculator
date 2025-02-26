@@ -21,7 +21,8 @@ public static class Tokenizer {
         }
       }
     }
-    
+
+    if (number.Length > 0) tokens.Add(Token.From(number: number.ToString()));
     return tokens;
   }
 }
