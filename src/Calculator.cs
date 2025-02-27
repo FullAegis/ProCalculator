@@ -62,6 +62,20 @@ public class Calculator(string equation) {
         break;
       }  
     });
+    
+    // Handle remaining operations
+    while (operators.Count > 0) {
+      if (operators.Peek().Type == TokenType.LeftParenthesis) {
+        throw new ArgumentException("Mismatched parentheses");
+      }
+      CalculateTop();
+    }
+
+    if (values.Count != 1) {
+      // Only the result should be left on the stack.
+      throw new ArgumentException($"Invalid expression: {Equation}");
+    }
+    
     return values.Pop();
   }
 }
