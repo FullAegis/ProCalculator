@@ -1,3 +1,5 @@
+using System.Globalization; // For: CultureInfo.InvariantCulture
+
 namespace ProCalculator;
 public class Calculator(string equation) {
   private static readonly Dictionary<string, int> kPrecedence = new() {
@@ -14,7 +16,7 @@ public class Calculator(string equation) {
     "+" => a + b,
     "-" => a - b,
     "*" => a * b,
-    "/" => a / b,
+    "/" => (b != 0) ? a / b : throw new DivideByZeroException("Cannot divide by 0"),
     "^" => Math.Pow(a, b),
       _ => throw new ArgumentException("Invalid operator.")
   };
@@ -39,7 +41,7 @@ public class Calculator(string equation) {
     Tokenizer.Tokenize(Equation).ForEach((token) => {
       switch (token.Type) {
       case TokenType.Number:
-        values.Push(double.Parse(token.Value));
+        values.Push(double.Parse(token.Value, CultureInfo.InvariantCulture));
         break;
       case TokenType.LeftParenthesis:
         operators.Push(token);
@@ -62,6 +64,20 @@ public class Calculator(string equation) {
         break;
       }  
     });
+    
+    // Handle remaining operations
+    while (operators.Count > 0) {
+      if (operators.Peek().Type == TokenType.LeftParenthesis) {
+        throw new ArgumentException("Mismatched parentheses");
+      }
+      CalculateTop();
+    }
+
+    if (values.Count != 1) {
+      // Only the result should be left on the stack.
+      throw new ArgumentException($"Invalid expression: {Equation}");
+    }
+    
     return values.Pop();
   }
 }

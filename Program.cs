@@ -1,5 +1,4 @@
-﻿using System;
-using ProCalculator;
+﻿namespace ProCalculator;
 
 class Program {
   private static string Prompt(string prompt) {
@@ -13,4 +12,3 @@ class Program {
     Console.WriteLine($"Result of {calc.Equation}: {calc.Evaluate()}");
   }
 }
-
