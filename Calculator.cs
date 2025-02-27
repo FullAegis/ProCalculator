@@ -55,7 +55,12 @@ public class Calculator(string equation) {
         operators.Pop(); // Pop '('
         break;
       case TokenType.Operator:
-        throw new NotImplementedException("Calculator.cs Calculator.Calculator TokenType.Operator.");
+        while (operators.Count > 0 && operators.Peek().Type == TokenType.Operator 
+                                   && HasHigherPrecedence(operators.Peek(), token)) {
+          CalculateTop();
+        }
+        operators.Push(token);
+        break;
       }  
     });
     return values.Pop();
