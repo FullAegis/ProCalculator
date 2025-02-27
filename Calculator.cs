@@ -23,7 +23,6 @@ public class Calculator(string equation) {
       throw new ArgumentException($"Invalid expression: {Equation}");
     }
 
-    var lhs = values.Pop();
     var rhs = values.Pop();
     var lhs = values.Pop();
     values.Push(ApplyOperator(lhs, rhs));
@@ -65,5 +64,4 @@ public class Calculator(string equation) {
     });
     return values.Pop();
   }
-
 }
