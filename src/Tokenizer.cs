@@ -7,7 +7,7 @@ public static class Tokenizer {
     var number = new System.Text.StringBuilder();
     
     foreach (var c in input) {
-      if (char.IsDigit(c) || c == '.' || (number.Length == 0 && c == '-')) {
+      if (char.IsDigit(c) || c == '.') {
         number.Append(c);
       } else {
         if (number.Length > 0) {
