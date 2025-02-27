@@ -25,6 +25,7 @@ public class Calculator(string equation) {
 
     var lhs = values.Pop();
     var rhs = values.Pop();
+    var lhs = values.Pop();
     values.Push(ApplyOperator(lhs, rhs));
   }
   public double Evaluate() {
