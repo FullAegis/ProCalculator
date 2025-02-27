@@ -16,7 +16,7 @@ public class Calculator(string equation) {
     "*" => a * b,
     "/" => a / b,
     "^" => Math.Pow(a, b),
-      _ => throw new ArgumentOutOfRangeException("Invalid operator.")
+      _ => throw new ArgumentException("Invalid operator.")
   };
   private void CalculateTop() {
     if (values.Count < 2) {
