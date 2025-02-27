@@ -14,6 +14,7 @@ public static class Tokenizer {
           tokens.Add(Token.From(number: number.ToString()));
           number.Clear();
         }
+        
         if (IsOperator(c)) {
           tokens.Add(Token.From(symbol: c));
         } else if (!char.IsWhiteSpace(c)) {
