@@ -6,3 +6,5 @@
 !/tst/*.cs
 !*.csproj
 !*.sln
+!readme.md
+!LICENSE
