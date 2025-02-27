@@ -1,4 +1,5 @@
-!*.cs
-!*.sln
-!*.csproj
 !.gitignore
+/src/Calculator.cs
+/src/Program.cs
+/src/Token.cs
+/src/Tokenizer.cs
