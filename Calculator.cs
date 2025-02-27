@@ -33,7 +33,7 @@ public class Calculator(string equation) {
     var lhs = left.Value;
     var rhs = right.Value;
     return kPrecedence[lhs] > kPrecedence[rhs]
-        || (kPrecedence[lhs] == kPrecedence[rhs] && IsLeftAssociative(lhs));
+        || (kPrecedence[lhs] == kPrecedence[rhs] && leftAssociative(lhs));
   }
   
   public double Evaluate() {
