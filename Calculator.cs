@@ -28,6 +28,14 @@ public class Calculator(string equation) {
     var lhs = values.Pop();
     values.Push(ApplyOperator(lhs, rhs));
   }
+  private static bool HasHigherPrecedence(Token left, Token right) {
+    var IsLeftAssociative = (string op) => op != "^";
+    var lhs = left.Value;
+    var rhs = right.Value;
+    return kPrecedence[lhs] > kPrecedence[rhs]
+        || (kPrecedence[lhs] == kPrecedence[rhs] && IsLeftAssociative(lhs));
+  }
+  
   public double Evaluate() {
     Tokenizer.Tokenize(Equation).ForEach((token) => {
       switch (token.Type) {
