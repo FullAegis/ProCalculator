@@ -29,7 +29,7 @@ public class Calculator(string equation) {
     values.Push(ApplyOperator(lhs, rhs));
   }
   private static bool HasHigherPrecedence(Token left, Token right) {
-    var IsLeftAssociative = (string op) => op != "^";
+    var leftAssociative = (string op) => op != "^";
     var lhs = left.Value;
     var rhs = right.Value;
     return kPrecedence[lhs] > kPrecedence[rhs]
