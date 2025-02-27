@@ -1,3 +1,5 @@
+using System.Globalization; // For: CultureInfo.InvariantCulture
+
 namespace ProCalculator;
 public class Calculator(string equation) {
   private static readonly Dictionary<string, int> kPrecedence = new() {
@@ -39,7 +41,7 @@ public class Calculator(string equation) {
     Tokenizer.Tokenize(Equation).ForEach((token) => {
       switch (token.Type) {
       case TokenType.Number:
-        values.Push(double.Parse(token.Value));
+        values.Push(double.Parse(token.Value, CultureInfo.InvariantCulture));
         break;
       case TokenType.LeftParenthesis:
         operators.Push(token);
