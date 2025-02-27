@@ -1,6 +1,6 @@
 namespace ProCalculator;
 public class Calculator(string equation) {
-  private static readonly Dictionary<string, int> kPecedence = new() {
+  private static readonly Dictionary<string, int> kPrecedence = new() {
     { "+", 0 }, { "-", 0 },
     { "*", 1 }, { "/", 1 },
     { "^", 2 },
