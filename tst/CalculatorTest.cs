@@ -97,6 +97,16 @@ public class CalculatorTests
         var calculator2 = new Calculator("1+2");
         Assert.That(calculator2.Evaluate(), Is.EqualTo(3.0));
     }
+    
+    [Test]
+    public void CalculatorEquationCanBeMutated()
+    {
+        var calculator = new Calculator("1 + 2");
+        Assert.That(calculator.Evaluate(), Is.EqualTo(3.0));
+
+        calculator.Equation = "2 + 2";
+        Assert.That(calculator.Evaluate(), Is.EqualTo(4.0));
+    }
 
     [Test]
     public void MismatchedParentheses_ThrowsException()
