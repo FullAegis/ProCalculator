@@ -1,5 +1,8 @@
+# Ignore everything
+*
+# Except
 !.gitignore
-/src/Calculator.cs
-/src/Program.cs
-/src/Token.cs
-/src/Tokenizer.cs
+!/src/*.cs
+!/tst/*.cs
+!*.csproj
+!*.sln
