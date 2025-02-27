@@ -14,7 +14,7 @@ public class Calculator(string equation) {
     "+" => a + b,
     "-" => a - b,
     "*" => a * b,
-    "/" => a / b,
+    "/" => (b != 0) ? a / b : throw new DivideByZeroException("Cannot divide by 0"),
     "^" => Math.Pow(a, b),
       _ => throw new ArgumentException("Invalid operator.")
   };
