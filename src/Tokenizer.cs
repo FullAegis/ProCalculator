@@ -1,6 +1,6 @@
 namespace ProCalculator;
 public static class Tokenizer {
-  private static bool IsOperator(char c) => "()^*/+-".Contains(c);
+  private static bool IsOperator(char c) => SearchValues.Create("()^*/+-").Contains(c);
   
   public static List<Token> Tokenize(string input) {
     var tokens = new List<Token>();
