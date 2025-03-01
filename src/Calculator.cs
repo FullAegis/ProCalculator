@@ -38,7 +38,7 @@ public class Calculator(string equation) {
   }
   
   public double Evaluate() {
-    Tokenizer.Tokenize(Equation).ForEach((token) => {
+    foreach (var token in Tokenizer.Tokenize(Equation)) {
       switch (token.Type) {
       case TokenType.Number:
         values.Push(double.Parse(token.Value, CultureInfo.InvariantCulture));
@@ -63,7 +63,7 @@ public class Calculator(string equation) {
         operators.Push(token);
         break;
       }  
-    });
+    }
     
     // Handle remaining operations
     while (operators.Count > 0) {
