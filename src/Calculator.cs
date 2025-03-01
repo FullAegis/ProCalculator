@@ -29,9 +29,9 @@ public class Calculator(string equation) {
     var lhs = values.Pop();
     values.Push(ApplyOperator(lhs, rhs));
   }
-  private static bool HasHigherPrecedence(Token left, Token right) {
+  private bool LowerPrecedence(Token right) {
     var leftAssociative = (string op) => op != "^";
-    var lhs = left.Value;
+    var lhs = operators.Peek().Value;
     var rhs = right.Value;
     return kPrecedence[lhs] > kPrecedence[rhs]
         || (kPrecedence[lhs] == kPrecedence[rhs] && leftAssociative(lhs));
