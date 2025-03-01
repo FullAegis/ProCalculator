@@ -9,7 +9,7 @@ public static class Tokenizer {
     var tokens = new List<Token>();
     var number = new StringBuilder();
     
-    var lastTokenType = () => tokens.DefaultIfEmpty(new(TokenType.Operator, "")).Last().Type;
+    TokenType LastTokenType() => tokens.DefaultIfEmpty(new(TokenType.Operator, "")).Last().Type;
     foreach (var c in input) {
       if (char.IsDigit(c) || c == '.') {
         number.Append(c);
