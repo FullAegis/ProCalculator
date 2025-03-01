@@ -37,6 +37,9 @@ public class Calculator(string equation) {
         || (kPrecedence[lhs] == kPrecedence[rhs] && leftAssociative(lhs));
   }
   
+  private TokenType LastOperatorType()
+    => (operators.Count < 1) ? TokenType.LeftParenthesis : operators.Peek().Type;
+  
   public double Evaluate() {
     foreach (var token in Tokenizer.Tokenize(Equation)) {
       switch (token.Type) {
@@ -47,7 +50,7 @@ public class Calculator(string equation) {
         operators.Push(token);
         break;
       case TokenType.RightParenthesis:
-        while (operators.Count > 0 && operators.Peek().Type != TokenType.LeftParenthesis) {
+        while (LastOperatorType() != TokenType.LeftParenthesis) {
           CalculateTop();
         }
         if (operators.Count == 0) {
@@ -56,8 +59,7 @@ public class Calculator(string equation) {
         operators.Pop(); // Pop '('
         break;
       case TokenType.Operator:
-        while (operators.Count > 0 && operators.Peek().Type == TokenType.Operator 
-                                   && HasHigherPrecedence(operators.Peek(), token)) {
+        while (LastOperatorType() == TokenType.Operator && LowerPrecedence(token)) {
           CalculateTop();
         }
         operators.Push(token);
