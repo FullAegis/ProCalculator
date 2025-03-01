@@ -1,10 +1,13 @@
+using System.Buffers; // For SearchValues
+using System.Text;    // For StringBuilder
+
 namespace ProCalculator;
 public static class Tokenizer {
   private static bool IsOperator(char c) => SearchValues.Create("()^*/+-").Contains(c);
   
   public static List<Token> Tokenize(string input) {
     var tokens = new List<Token>();
-    var number = new System.Text.StringBuilder();
+    var number = new StringBuilder();
     
     var lastTokenType = () => tokens.DefaultIfEmpty(new(TokenType.Operator, "")).Last().Type;
     foreach (var c in input) {
