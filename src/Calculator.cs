@@ -18,7 +18,7 @@ public class Calculator(string equation) {
     "*" => a * b,
     "/" => (b != 0) ? a / b : throw new DivideByZeroException("Cannot divide by 0"),
     "^" => Math.Pow(a, b),
-      _ => throw new ArgumentException("Invalid operator.")
+    _   => throw new ArgumentException("Invalid operator.")
   };
   private void CalculateTop() {
     if (values.Count < 2) {
