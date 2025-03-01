@@ -1,5 +1,6 @@
 namespace ProCalculator;
 public enum TokenType {
+  None = 0,
   Number,
   Operator,
   LeftParenthesis,
