@@ -16,6 +16,6 @@ public class Token(TokenType type, string value) {
   public static Token From(char symbol) => symbol switch {
     '(' => new(TokenType.LeftParenthesis, "("),
     ')' => new(TokenType.RightParenthesis, ")"),
-      _ => new(TokenType.Operator, symbol.ToString()),
+    _   => new(TokenType.Operator, symbol.ToString()),
   };
  }
