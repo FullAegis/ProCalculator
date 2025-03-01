@@ -20,7 +20,7 @@ public static class Tokenizer {
         }
         
         if (IsOperator(c)) {
-          if (c == '-' && lastTokenType() == TokenType.Operator) {
+          if (c == '-' && LastTokenType() == TokenType.Operator) {
             number.Append('-');
           } else {
             tokens.Add(Token.From(symbol: c));
