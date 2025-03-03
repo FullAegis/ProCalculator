@@ -140,6 +140,17 @@ public class CalculatorTests
 
         var calculator2 = new Calculator("* 2");
         Assert.Throws<ArgumentException>(() => calculator2.Evaluate());
+    }    
+    [Test]
+    public void ValidExpression_UnarySignOperator_DoesNotThrowsException()
+    {
+        var calculator = new Calculator("+1");
+        Assert.That(calculator.Evaluate(), Is.EqualTo(1.0));
+        Assert.DoesNotThrow(() => calculator.Evaluate());
+
+        var calculator2 = new Calculator("-2");
+        Assert.That(calculator2.Evaluate(), Is.EqualTo(-2.0));
+        Assert.DoesNotThrow(() => calculator2.Evaluate());
     }
 
     [Test]
