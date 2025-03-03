@@ -80,6 +80,13 @@ public class CalculatorTests
         var calculator = new Calculator("-1 - 1");
         Assert.That(calculator.Evaluate(), Is.EqualTo(-2.0));
     }
+    
+    [Test]
+    public void UnaryPlusAtBeginningOfExpression()
+    {
+        var calculator = new Calculator("+1 - 1");
+        Assert.That(calculator.Evaluate(), Is.EqualTo(0.0));
+    }
 
     [Test]
     public void CombinedOperations()
