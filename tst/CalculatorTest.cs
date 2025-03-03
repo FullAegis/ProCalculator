@@ -89,6 +89,13 @@ public class CalculatorTests
     }
 
     [Test]
+    public void OperatorPrecedence_WithUnaryPlus()
+    {
+        var calculator = new Calculator("1 + 2 * +3");
+        Assert.That(calculator.Evaluate(), Is.EqualTo(7.0));
+    }
+    
+    [Test]
     public void CombinedOperations()
     {
         var calculator = new Calculator("1 + 2.5 * 2");
